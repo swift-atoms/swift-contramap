@@ -1,5 +1,3 @@
-/// A borrowed input projection for adapting consumers to a different source.
-/// The source is never consumed. The projected value is owned and escapable.
 public struct Contramap<
     Source: ~Copyable & ~Escapable,
     Target: ~Copyable,
