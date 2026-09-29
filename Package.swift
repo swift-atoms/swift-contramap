@@ -18,5 +18,6 @@ for target in package.targets {
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableExperimentalFeature("Lifetimes"),
+        .enableUpcomingFeature("InferIsolatedConformances"),
     ]
 }
