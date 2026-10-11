@@ -1,7 +1,7 @@
 public struct Contramap<
     Source: ~Copyable & ~Escapable,
     Target: ~Copyable,
-    Failure: Swift.Error
+    Failure: Swift::Error
 > {
     public let project: (borrowing Source) throws(Failure) -> Target
 
@@ -9,7 +9,9 @@ public struct Contramap<
     public init(_ project: @escaping (borrowing Source) throws(Failure) -> Target) {
         self.project = project
     }
+}
 
+extension Contramap where Source: ~Copyable & ~Escapable, Target: ~Copyable {
     @inlinable
     public func callAsFunction(_ source: borrowing Source) throws(Failure) -> Target {
         try project(source)

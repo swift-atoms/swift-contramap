@@ -7,11 +7,11 @@ let package = Package(
     products: [.library(name: "Contramap", targets: ["Contramap"])],
     targets: [
         .target(name: "Contramap"),
-        .testTarget(name: "Contramap Tests", dependencies: ["Contramap"]),
+        .testTarget(name: "Contramap Tests", dependencies: [.target(name: "Contramap")]),
     ],
     swiftLanguageModes: [.v6]
 )
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
