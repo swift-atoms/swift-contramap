@@ -3,7 +3,7 @@ import Testing
 
 @Suite struct `Borrowed input adaptation` {
     private struct Owned: ~Copyable { let value: Int }
-    private enum Failure: Error, Equatable { case rejected }
+    private enum Failure: Swift.Error, Equatable { case rejected }
 
     @Test func `projection borrows its owner and produces a noncopyable result`() {
         let projection = Contramap { (source: borrowing Owned) in Owned(value: source.value + 1) }
